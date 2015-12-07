@@ -2,6 +2,7 @@
 #include "myrect.h"
 #include "vertex.h"
 #include "cube.h"
+#include "myLog.h"
 
 #pragma region Globals(全局变量)
 
@@ -9,10 +10,10 @@
 IDirect3DDevice9* Device = 0;
 
 // 窗口的宽
-const int Width		= 1000;
+const int Width		= 512;
 
 // 窗口的高
-const int Heigth	= 1000;
+const int Heigth	= 512;
 
 #pragma region Variable(变量)
 
@@ -232,6 +233,10 @@ LRESULT CALLBACK d3d::WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 		{
 			::DestroyWindow(hwnd);
 		}
+        else if(wParam == VK_ADD)
+        {
+            MyLog::Log("hello,my name is %d %s\n",1,"lai");
+        }
 		break;
 	}
 
