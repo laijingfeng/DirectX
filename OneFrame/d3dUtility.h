@@ -24,7 +24,7 @@ namespace d3d
 		WPARAM wParam,
 		LPARAM lParam);
 
-	// 释放COM接口置为NULL.
+	// 释放COM，即接口，指针置为NULL.
 	template<class T> void Release(T t)
 	{
 		if(t)
@@ -34,7 +34,7 @@ namespace d3d
 		}
 	}
 
-	// 删除自由堆中的对象，置为NULL.
+	// 删除自由堆中的对象（类），指针置为NULL.
 	template<class T> void Delete(T t)
 	{
 		if(t)

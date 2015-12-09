@@ -101,7 +101,7 @@ bool Setup()
 	return true;
 }
 
-// 清理
+// 清理，释放Setup()中分配的资源
 void Cleanup()
 {
 	d3d::Delete<MyRect*>(Bkg);
@@ -109,7 +109,10 @@ void Cleanup()
 	d3d::Delete<Cube*>(cube);
 }
 
+//
 // 显示
+// timeDelta 每一帧的间隔时间(秒)
+//
 bool Display(float timeDelta)
 {
 	if(Device)
@@ -185,12 +188,12 @@ bool Display(float timeDelta)
 
 #pragma endregion BeforeDrawSetting(绘制前设置)
 		
-		Device->Clear(0, 0, D3DCLEAR_TARGET|D3DCLEAR_ZBUFFER , 0x00000000, 1.0f, 0);//0x00000000//0xffffffff
+		Device->Clear(0, 0, D3DCLEAR_TARGET|D3DCLEAR_ZBUFFER , 0xffffffff, 1.0f, 0);//0x00000000//0xffffffff
 
 		Device->BeginScene();
 
 #pragma region Draw(绘制)
-
+		/*
 	    if(cube)
 	    {
 		    cube->draw(0, 0, d3d::InitTex(Device, "pic.png"));
@@ -207,14 +210,15 @@ bool Display(float timeDelta)
 	    {
 		    Pic->draw(0);
 	    }
-	
+		*/
+
 	    //Device->SetRenderState(D3DRS_ALPHABLENDENABLE, false);
 
 #pragma endregion Draw(绘制)
 
 		Device->EndScene();
 
-		Device->Present(0, 0, 0, 0);
+		Device->Present(0, 0, 0, 0);// present backbuffer
 	}
 	return true;
 }
@@ -235,7 +239,8 @@ LRESULT CALLBACK d3d::WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 		}
         else if(wParam == VK_ADD)
         {
-            MyLog::Log("hello,my name is %d %s\n",1,"lai");
+            //do some test
+			MyLog::Log("do some test %d\n",1);
         }
 		break;
 	}
