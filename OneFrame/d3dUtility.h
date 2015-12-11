@@ -78,7 +78,7 @@ namespace d3d
 	const D3DMATERIAL9 YELLOW_MTRL = InitMtrl(YELLOW, YELLOW, YELLOW, BLACK, 2.0f);
 
 	//
-	// Texture
+	// Textures
 	//
 
 	IDirect3DTexture9* InitTex(IDirect3DDevice9* Device, char* filePath);
